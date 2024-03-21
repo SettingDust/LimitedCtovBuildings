@@ -1,5 +1,5 @@
 apply(
-    from = "https://github.com/SettingDust/FabricKotlinTemplate/raw/main/common.settings.gradle.kts"
+    from = "https://github.com/SettingDust/LimitedCtovBuildings/raw/main/common.settings.gradle.kts"
 )
 
 val minecraft = settings.extra["minecraft"]
