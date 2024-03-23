@@ -15,7 +15,19 @@
   "license": "MIT",
   "icon": "assets/${id}/icon.png",
   "environment": "*",
+  "mixins": [
+    "${id}.mixins.json"
+  ],
   "entrypoints": {
+    "mixinsquared": [
+      "${group}.mixin.DevMixinCanceller"
+    ],
+    "fabric-datagen": [
+      {
+        "adapter": "kotlin",
+        "value": "${group}.datagen.Entrypoint"
+      }
+    ],
     "main": [
       {
         "adapter": "kotlin",
@@ -27,21 +39,8 @@
         "adapter": "kotlin",
         "value": "${group}.client.EntrypointKt::init"
       }
-    ],
-    "modmenu": [
-      {
-        "adapter": "kotlin",
-        "value": "${group}.client.ModMenuEntrypoint"
-      }
     ]
   },
-  "mixins": [
-    "${id}.mixins.json",
-    {
-      "config": "${id}.client.mixins.json",
-      "environment": "client"
-    }
-  ],
   "depends": {
     "fabricloader": "${fabric_loader}",
     "minecraft": "${minecraft}",

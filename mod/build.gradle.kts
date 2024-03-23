@@ -14,24 +14,12 @@ val description: String by rootProject.properties
 
 archivesName = name
 
+repositories { maven("https://jitpack.io") { content { includeGroupAndSubgroups("com.github") } } }
+
+fabricApi { configureDataGeneration() }
+
 loom {
-    splitEnvironmentSourceSets()
-
-    mixin {
-        defaultRefmapName = "$id.refmap.json"
-
-        add("main", "$id.refmap.json")
-        add("client", "$id.client.refmap.json")
-    }
-
     accessWidenerPath = file("src/main/resources/$id.accesswidener")
-
-    mods {
-        register(id) {
-            sourceSet(sourceSets["main"])
-            sourceSet(sourceSets["client"])
-        }
-    }
 
     runs {
         configureEach { ideConfigGenerated(true) }
@@ -48,8 +36,15 @@ dependencies {
     modImplementation(catalog.fabric.api)
     modImplementation(catalog.fabric.kotlin)
 
-    val modClientImplementation by configurations
-    modClientImplementation(catalog.modmenu)
+    modRuntimeOnly(catalog.modmenu)
+
+    modImplementation(catalog.patched)
+
+    modImplementation(catalog.lithostitched)
+
+    modImplementation(catalog.ctov)
+
+    implementation(annotationProcessor(catalog.mixinsquared.get()) {})
 }
 
 kotlin { jvmToolchain(17) }

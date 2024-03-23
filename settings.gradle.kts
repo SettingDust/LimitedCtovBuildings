@@ -1,11 +1,21 @@
 apply(
-    from = "https://github.com/SettingDust/LimitedCtovBuildings/raw/main/common.settings.gradle.kts"
+    from = "https://github.com/SettingDust/FabricKotlinTemplate/raw/main/common.settings.gradle.kts"
 )
 
 val minecraft = settings.extra["minecraft"]
 val kotlin = settings.extra["kotlin"]
 
-dependencyResolutionManagement.versionCatalogs.named("catalog") {}
+dependencyResolutionManagement.versionCatalogs.named("catalog") {
+    // https://modrinth.com/mod/patched/versions
+    library("patched", "maven.modrinth", "patched").version("3.2.3+$minecraft-fabric")
+    // https://modrinth.com/mod/lithostitched/versions
+    library("lithostitched", "maven.modrinth", "lithostitched").version("1.1.5-fabric,$minecraft")
+    // https://modrinth.com/mod/ct-overhaul-village/versions
+    library("ctov", "maven.modrinth", "ct-overhaul-village").version("3.4.2-fabric")
+    // https://github.com/Bawnorton/MixinSquared
+    library("mixinsquared", "com.github.bawnorton.mixinsquared", "mixinsquared-fabric")
+        .version("0.1.2-beta.5")
+}
 
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
