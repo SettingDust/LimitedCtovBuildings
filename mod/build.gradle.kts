@@ -77,7 +77,21 @@ tasks {
         filesMatching(listOf("fabric.mod.json", "*.mixins.json")) { expand(metadata) }
     }
 
-    jar { from("LICENSE") }
+    jar {
+        enabled = false
+        from("LICENSE")
+    }
+
+    remapJar { enabled = false }
 
     ideaSyncTask { enabled = true }
+
+    val buildDatapack by
+        creating(Zip::class) {
+            from(sourceSets.main.get().resources)
+            include("pack.mcmeta", "pack.png", "data/**")
+            destinationDirectory = project.layout.buildDirectory.dir("libs")
+        }
+
+    build { dependsOn(buildDatapack) }
 }
