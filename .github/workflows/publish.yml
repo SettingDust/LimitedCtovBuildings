@@ -58,12 +58,12 @@ jobs:
             quilt
 
           game-versions: |
-            [1.20, 1.20.2)
+            [1.20, 1.20.4)
           game-version-filter: releases
 
           dependencies: |
-            fabric-language-kotlin
-            connector{curseforge:890127}
+            lithostitched
+            patched
 
           java: |
             17

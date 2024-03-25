@@ -13,21 +13,17 @@ import settingdust.limitedctovbuildings.datagen.EntrypointKt;
 @Mixin(Main.class)
 public class MainMixin {
     @Inject(
-        method = "main",
-        at = @At(
-            value = "INVOKE",
-            shift = At.Shift.BY,
-            by = 2,
-            target = "Lnet/minecraft/registry/CombinedDynamicRegistries;getCombinedRegistryManager()" +
-                     "Lnet/minecraft/registry/DynamicRegistryManager$Immutable;"
-        ),
-        cancellable = true
-    )
+            method = "main",
+            at =
+                    @At(
+                            value = "INVOKE",
+                            shift = At.Shift.BY,
+                            by = 2,
+                            target = "Lnet/minecraft/registry/CombinedDynamicRegistries;getCombinedRegistryManager()"
+                                    + "Lnet/minecraft/registry/DynamicRegistryManager$Immutable;"),
+            cancellable = true)
     private static void callDataGen(
-        String[] args,
-        CallbackInfo info,
-        @Local DynamicRegistryManager.Immutable registryManager
-    ) {
+            String[] args, CallbackInfo info, @Local DynamicRegistryManager.Immutable registryManager) {
         if (FabricDataGenHelper.ENABLED) {
             EntrypointKt.setRegistries(registryManager);
             FabricDataGenHelper.run();
