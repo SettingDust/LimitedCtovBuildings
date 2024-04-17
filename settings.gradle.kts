@@ -15,6 +15,8 @@ dependencyResolutionManagement.versionCatalogs.named("catalog") {
     // https://github.com/Bawnorton/MixinSquared
     library("mixinsquared", "com.github.bawnorton.mixinsquared", "mixinsquared-fabric")
         .version("0.1.2-beta.5")
+    // https://modrinth.com/mod/ct-overhaul-village/versions
+    library("ctov", "maven.modrinth", "ct-overhaul-village").version("3.4.2-fabric")
 }
 
 plugins {

@@ -63,7 +63,7 @@ class CtovUseLithostitchedJigsawProvider(generator: DataGenerator) :
                     add("/elements/0/element/element_type", "lithostitched:guaranteed")
                     add("/elements/0/element/count", 1)
                     add("/elements/0/element/min_depth", 3)
-                    move("/delegate", "/elements/0/element/delegate")
+                    move("/elements/0/element/delegate", "/delegate")
                 }
                 .end()
         }
