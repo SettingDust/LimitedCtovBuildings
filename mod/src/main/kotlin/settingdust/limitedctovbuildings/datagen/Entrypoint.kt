@@ -58,12 +58,12 @@ class CtovUseLithostitchedJigsawProvider(generator: DataGenerator) :
                 .compound()
                 .apply {
                     test("/elements/0/element/element_type", "lithostitched:guaranteed", true)
-                    move("/delegate", "/elements/0/element")
+                    move("/_delegate", "/elements/0/element")
                     add("/elements/0/element", JsonObject())
                     add("/elements/0/element/element_type", "lithostitched:guaranteed")
                     add("/elements/0/element/count", 1)
                     add("/elements/0/element/min_depth", 3)
-                    move("/elements/0/element/delegate", "/delegate")
+                    move("/elements/0/element/delegate", "/_delegate")
                 }
                 .end()
         }

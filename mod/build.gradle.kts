@@ -88,6 +88,7 @@ tasks {
 
     val buildDatapack by
         creating(Zip::class) {
+            dependsOn("runDatagen")
             from(sourceSets.main.get().resources)
             include("pack.mcmeta", "pack.png", "data/**")
             destinationDirectory = project.layout.buildDirectory.dir("libs")
